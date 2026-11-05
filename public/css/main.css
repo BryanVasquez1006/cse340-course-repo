@@ -1,30 +1,301 @@
-html, body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+
+/* ========================================
+   CSE 340 SERVICE NETWORK
+   Modern & Minimalist Design
+======================================== */
+
+/* 1. DESIGN TOKENS */
+
+:root {
+  --color-primary: #173b35;
+  --color-secondary: #247a63;
+  --color-accent: #dda45c;
+  --color-background: #f5f7f5;
+  --color-surface: #ffffff;
+  --color-soft-green: #e9f3ec;
+  --color-text: #243630;
+  --color-muted: #586b63;
+  --color-border: #dce7df;
+
+  --shadow-sm: 0 3px 12px rgba(23, 59, 53, 0.06);
+  --shadow-md: 0 12px 30px rgba(23, 59, 53, 0.1);
+
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --content-width: 1100px;
+}
+
+/* 2. GLOBAL RESET */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-        li {
-            display: inline;
-            margin-right: 15px;
-        }
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text);
+  background: var(--color-background);
+}
 
-            &:hover {
-                color: #0066cc;
-            }
-        }
-    }
-}                
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 3. TYPOGRAPHY */
+
+h1,
+h2,
+h3 {
+  color: var(--color-primary);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+p {
+  margin: 0 0 1.5rem;
+  color: var(--color-muted);
+}
+
+a {
+  color: var(--color-secondary);
+}
+
+/* 4. NAVIGATION */
+
+nav {
+  background: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+nav ul {
+  width: min(100% - 2rem, var(--content-width));
+  margin: 0 auto;
+  padding: 1rem 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+
+  list-style: none;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
+}
+
+nav a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* 5. MAIN CONTENT */
+
+main {
+  width: min(100% - 2rem, var(--content-width));
+  margin: 3.5rem auto;
+  flex: 1;
+}
+
+main > h1 {
+  text-align: center;
+}
+
+main > h2 {
+  text-align: center;
+}
+
+main > p {
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+/* 6. HOME PAGE */
+
+.main-logo {
+  width: min(100%, 440px);
+  margin: 2.5rem auto;
+  padding: 1.5rem;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* 7. CONTENT LISTS */
+
+main ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+main li {
+  min-width: 0;
+  padding: 1.75rem;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+main li:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-secondary);
+}
+
+/* 8. ORGANIZATION CARDS */
+
+main li img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+}
+
+main li strong {
+  display: block;
+  margin-bottom: 0.5rem;
+
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+/* 9. FOOTER */
+
+footer {
+  padding: 1.75rem 1rem;
+  background: var(--color-primary);
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+/* 10. RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+  main {
+    margin: 2.5rem auto;
+  }
+
+  main ul {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  main li {
+    padding: 1.5rem;
+  }
+
+  nav ul {
+    gap: 0.5rem;
+  }
+
+  nav a {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    margin: 2rem auto;
+  }
+
+  nav ul {
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 0.875rem;
+  }
+
+  main li {
+    padding: 1.25rem;
+  }
+
+  .main-logo {
+    padding: 1rem;
+  }
+}
+
+/* 11. ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
