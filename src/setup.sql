@@ -163,3 +163,56 @@ VALUES
         'Apopa',
         '2027-01-29'
     );
+
+    CREATE TABLE category (
+	category_id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL UNIQUE
+);
+
+INSERT INTO category (name)
+VALUES
+    ('Environmental'),
+    ('Community Service'),
+    ('Education'),
+    ('Health & Wellness');
+
+CREATE TABLE project_category (
+	project_id INTEGER NOT NULL
+		REFERENCES service_project(project_id),
+
+	category_id INTEGER NOT NULL
+		REFERENCES category(category_id),
+
+	PRIMARY KEY (project_id, category_id)
+);
+
+INSERT INTO project_category (project_id, category_id)
+VALUES
+    -- BrightFuture Builders
+    (1, 2),  -- Community Housing Renovation: Community Service
+    (2, 3),  -- School Classroom Restoration: Education
+    (2, 2),  -- School Classroom Restoration: Community Service
+    (3, 2),  -- Playground Construction: Community Service
+    (4, 2),  -- Community Center Repairs: Community Service
+    (5, 2),  -- Home Accessibility Improvements: Community Service
+
+    -- GreenHarvest Growers
+    (6, 1),  -- River Cleanup Campaign: Environmental
+    (6, 2),  -- River Cleanup Campaign: Community Service
+    (7, 1),  -- Urban Tree Planting: Environmental
+    (8, 1),  -- Community Vegetable Garden: Environmental
+    (8, 2),  -- Community Vegetable Garden: Community Service
+    (9, 1),  -- Environmental Education Workshop: Environmental
+    (9, 3),  -- Environmental Education Workshop: Education
+    (10, 1), -- Public Park Restoration: Environmental
+    (10, 2), -- Public Park Restoration: Community Service
+
+    -- UnityServe Volunteers
+    (11, 2), -- Food Donation Drive: Community Service
+    (12, 2), -- Elderly Care Visit: Community Service
+    (12, 4), -- Elderly Care Visit: Health & Wellness
+    (13, 2), -- School Supplies Distribution: Community Service
+    (13, 3), -- School Supplies Distribution: Education
+    (14, 2), -- Community Health Awareness Day: Community Service
+    (14, 4), -- Community Health Awareness Day: Health & Wellness
+    (15, 2); -- Clothing Donation Campaign: Community Service
