@@ -1,18 +1,19 @@
 <%- include ('partials/header') %>
-
-    <h2><%= organizationDetails.name %></h2>
-    <img
-      class="organization-logo"
-      src="/images/<%= organizationDetails.logo_filename %>"
-      alt="<%= organizationDetails.name %> Logo"
-    />
-    <p><%= organizationDetails.description %></p>
-
-    <h3>Service Projects</h3>
-    <ul>
-        <% projects.forEach(project => { %>
-            <li><a href="/projects/<%= project.project_id %>"><%= project.title %></a></li>
-        <% }); %>
-    </ul>
+    <main>
+        <h2><%= organizationDetails.name %></h2>
+        <img
+          class="organization_img"
+          src="/images/<%= organizationDetails.logo_filename %>"
+          alt="<%= organizationDetails.name %> Logo"
+        />
+        <p><%= organizationDetails.description %></p>
+    
+        <h3>Service Projects</h3>
+        <ul>
+            <% projects.forEach(project => { %>
+                <li><a href="/project/<%= project.project_id %>"><%= project.title %></a></li>
+            <% }); %>
+        </ul>
+    </main>
 
 <%- include ('partials/footer') %>

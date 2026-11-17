@@ -215,6 +215,13 @@ main li img {
   margin: 0 auto 1rem;
 }
 
+.organization_img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+}
+
 main li strong {
   display: block;
   margin-bottom: 0.5rem;

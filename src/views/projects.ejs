@@ -2,21 +2,18 @@
 
 <main>
   <h1><%= title %></h1>
-  <h2>Upcoming Service Projects</h2>
-
   <ul>
-    <% projects.forEach(project => { %>
+    <% upcomingProjects.forEach(project => { %>
       <li>
+        <h2>
+          <a href="/project/<%= project.project_id %>"><%= project.title %>
+          </a>
+        </h2>
         <p>
-          <strong>Date:</strong>
-          <%= project.date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            timeZone: 'UTC'
-          }) %>:
-          <%= project.title %>
-          (<em><%= project.organization_name %></em>)
+          <strong>Organization:</strong>
+          <a href="/organizations/<%= project.organization_id %>">
+            <%= project.organization_name %>
+          </a>
         </p>
       </li>
     <% }); %>
