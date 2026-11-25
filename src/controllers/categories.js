@@ -57,7 +57,7 @@ const showAssignCategoriesForm = async (req, res, next) => {
 
   const categories = await getCategoriesByProjectId(projectId);
   res.render('assign-categories', { 
-    title: 'Assign Categories to Project',
+    title: 'Assign Categories to ' + projectDetails.title,
     projectDetails: projectDetails,
     allCategories: categoriesDetails,
     assignedCategories: categories
