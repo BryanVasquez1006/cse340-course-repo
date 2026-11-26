@@ -44,6 +44,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: { maxAge: 60 * 60 * 1000 } // expires in 1 hour in milliseconds
 })); 
+
+// Flash messages middleware
 app.use(flash);
 
 
